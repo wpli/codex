@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>news to action</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"> 
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+  <script>
+  $(function() {
+    var actions = [ 
+  "Sign a <a href='http://www.change.org/en-CA/petitions/hon-kellie-leitch-minister-for-the-status-of-women-call-a-public-inquiry-into-hundreds-of-missing-and-murdered-aboriginal-women-like-my-cousin-loretta-saunders' target='actionPage' >petition at change.org</a> calling for a public inquiry into hundreds of missing and murdered Aboriginal women.", 
+  "Watch this introductory video about Stand Off, a town in southern Alberta, and <a href='kickstarter.html' target='actionPage'>donate to the Kickstarter campaign</a>.", 
+  "Learn more about Aboriginal artists and art through a <a href='http://www.artistsincanada.com/artist/browse/aboriginal-alberta/?cat=256&prov=1' target='actionPage'>virtual tour</a>.", 
+  "Visit a <a href='http://www.ncct.on.ca/' target='actionPage'>nearby Aboriginal cultural centre</a> in Canada", 
+  "Learn about and donate to <a href='http://www.aadnc-aandc.gc.ca/eng/1100100022854/1314815227297' target='actionPage'>community organizations serving Aboriginals</a> facing challenges in Canadian cities", 
+  "Spend an extended period of time volunteering in a Canadian community through <a href='http://www.katimavik.org/' target='actionPage'>Katimavik</a>, a program for youth from across the country." ]
+    var times = [ "2 minutes", "10 minutes", "1 hour", "half a day", "a weekend", "a week or more" ]
+    var links = [ 'http://www.change.org/en-CA/petitions/hon-kellie-leitch-minister-for-the-status-of-women-call-a-public-inquiry-into-hundreds-of-missing-and-murdered-aboriginal-women-like-my-cousin-loretta-saunders', 'kickstarter.html', 'http://www.artistsincanada.com/artist/browse/aboriginal-alberta/?cat=256&prov=1','http://www.ncct.on.ca/', 'http://www.aadnc-aandc.gc.ca/eng/1100100022854/1314815227297', 'http://www.katimavik.org' ]
+
+    $( "#slider" ).slider({
+      value:0,
+      min: 0,
+      max: 5,
+      step: 1,
+      slide: function( event, ui ) {
+        $( "#amount" ).val( times[ui.value] );
+        var item = document.getElementById( "description" );
+        item.innerHTML = actions[ui.value];
+        var iframeAction = document.getElementById( "actionPageIframe" );
+        iframeAction.src = links[ui.value];
+
+  
+        //$( "#description" ).val( actions[ui.value] );
+  }
+    });
+    $( "#amount" ).val( times[$( "#slider" ).slider( "value" )] );
+    //$( "#description" ).val( actions[$( "#slider" ).slider( "value" )] );
+    $( "#hello").val( "helloworld" );
+    var item = document.getElementById( "description" );
+    item.innerHTML= actions[$( "#slider" ).slider( "value" )];
+    //var iframeAction = document.getElementById( "actionPageIframe" );
+    //iframeAction.src = "kickstarter.html";
+
+  });
+  </script>
+
+</head>
+<body>
+<font face="Helvetica">
+
+
+
+ 
+<p>
+  <!-- <label for="amount">Take action! </label> -->
+  <label for="amount">Action Time:</label> 
+  <input type="text" id="amount" size="35" style="border:10; font-weight:bold; font-size:16px;">  
+</p>
+ 
+<div id="slider"></div>
+
+<p id="description">
+</p>  
+
+<iframe id="actionPageIframe" name="actionPage" width=750 height=500></iframe>
+
+ 
+</body>
+</html>
