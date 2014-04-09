@@ -20,7 +20,7 @@
     var links = [ 'http://www.change.org/en-CA/petitions/hon-kellie-leitch-minister-for-the-status-of-women-call-a-public-inquiry-into-hundreds-of-missing-and-murdered-aboriginal-women-like-my-cousin-loretta-saunders', 'kickstarter.html', 'http://www.artistsincanada.com/artist/browse/aboriginal-alberta/?cat=256&prov=1','http://www.ncct.on.ca/', 'http://www.aadnc-aandc.gc.ca/eng/1100100022854/1314815227297', 'http://www.katimavik.org' ]
 
     $( "#slider" ).slider({
-      value:0,
+      value:1,
       min: 0,
       max: 5,
       step: 1,
@@ -37,11 +37,10 @@
     });
     $( "#amount" ).val( times[$( "#slider" ).slider( "value" )] );
     //$( "#description" ).val( actions[$( "#slider" ).slider( "value" )] );
-    $( "#hello").val( "helloworld" );
     var item = document.getElementById( "description" );
     item.innerHTML= actions[$( "#slider" ).slider( "value" )];
-    //var iframeAction = document.getElementById( "actionPageIframe" );
-    //iframeAction.src = "kickstarter.html";
+    var iframeAction = document.getElementById( "actionPageIframe" );
+    iframeAction.src = links[$( "#slider" ).slider( "value" )];
 
   });
   </script>
